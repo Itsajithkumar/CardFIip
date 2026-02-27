@@ -144,6 +144,7 @@ public class GameManager : MonoBehaviour
     }
     public void QuitGame()
     {
+        Debug.Log("Application Quit!");
         Application.Quit();
     }
 
@@ -174,6 +175,11 @@ public class GameManager : MonoBehaviour
     }
     public void sceneload()
     {
+        Invoke(nameof(SceneCall), 0.5f);
+    }
+
+    private void SceneCall()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     private void GameWon()
@@ -181,6 +187,7 @@ public class GameManager : MonoBehaviour
         SaveSystem.Instance.ClearSave();
         resumeButton.interactable = false;
         GameOverPanel.SetActive(true);
+        SoundManager.Instance.PlayGameOver();
         Debug.Log("Game Completed!");
     }
 

@@ -100,13 +100,13 @@ public class Card : MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
+        SoundManager.Instance?.PlayFlip();
 
         transform.rotation = Quaternion.Euler(0f, 180f, 0f);
 
         isFlipped = true;
         isAnimating = false;
 
-        SoundManager.Instance?.PlayFlip();
     }
 
     private IEnumerator FlipBackward()

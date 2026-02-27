@@ -8,8 +8,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip matchSound;
     [SerializeField] private AudioClip mismatchSound;
     [SerializeField] private AudioClip gameOverSound;
-
-    private AudioSource audioSource;
+    [SerializeField] private AudioClip ButtonClickSound;
+    [SerializeField] private AudioSource audioSource;
 
     void Awake()
     {
@@ -18,11 +18,12 @@ public class SoundManager : MonoBehaviour
         else
             Destroy(gameObject);
 
-        audioSource = gameObject.AddComponent<AudioSource>();
+       
     }
 
     public void PlayFlip() => audioSource.PlayOneShot(flipSound);
     public void PlayMatch() => audioSource.PlayOneShot(matchSound);
     public void PlayMismatch() => audioSource.PlayOneShot(mismatchSound);
     public void PlayGameOver() => audioSource.PlayOneShot(gameOverSound);
+    public void ButtonClick() => audioSource.PlayOneShot(ButtonClickSound);
 }
